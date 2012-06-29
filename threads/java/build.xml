@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE project [<!ENTITY common SYSTEM "common.xml">]>
+
+<project name="threads" default="build-src" basedir=".">
+	
+	<property name="src_dir" value="./src"/>
+	<property name="class_dir" value="./classes"/>
+
+	<target name="build-src" depends="clean-classes">
+		<javac srcdir="${src_dir}" destdir="${class_dir}" source="1.6" target="1.6" fork="true"/>
+	</target>
+
+	<target name="clean-classes">
+		<delete dir="${class_dir}"/>
+		<mkdir dir="${class_dir}"/>
+	</target>
+	
+</project>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE project [<!ENTITY common SYSTEM "common.xml">]>
+
+<project name="threads" default="compile" basedir=".">
+	
+	<property name="src_dir" value="./src"/>
+	<property name="class_dir" value="./classes"/>
+
+	<target name="compile" depends="clean">
+		<mkdir dir="${class_dir}"/>
+		<javac srcdir="${src_dir}" destdir="${class_dir}" source="1.6" target="1.6" fork="true" classpath="lib/ini4j-0.5.2.jar" />
+	</target>
+
+	<target name="clean">
+		<delete dir="${class_dir}"/>
+	</target>
+	
+</project>

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+echo "### Compiling #####################"
+ant
+cd classes
+echo "### Launching #####################"
+java main.Main

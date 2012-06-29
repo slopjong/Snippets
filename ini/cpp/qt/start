@@ -1,0 +1,6 @@
+#!/bin/bash
+
+make distclean
+qmake
+make
+./IniTest
