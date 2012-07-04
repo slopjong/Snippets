@@ -10,9 +10,7 @@ Receiver::Receiver(QNetworkReply *reply, QObject *parent) :
 
 void Receiver::slotReadyRead()
 {
-    //cout << m_reply->manager()- << endl;
     cout << "slotReadyRead()" << endl;
-    //m_reply->
 }
 
 void Receiver::slotError(QNetworkReply::NetworkError)
