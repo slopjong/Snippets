@@ -1,0 +1,5 @@
+This example doesn't handle redirects.
+
+This example prints the contents only if the resource is not redirected.
+To get the HTTP status code call the attribute( QNetworkRequest::Attribute code )
+method from the reply object by passing it HttpStatusCodeAttribute.
