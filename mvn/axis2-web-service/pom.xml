@@ -10,6 +10,22 @@
 
   <build>
     <finalName>${project.artifactId}-${project.version}</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.axis2</groupId>
+        <artifactId>axis2-java2wsdl-maven-plugin</artifactId>
+        <configuration>
+          <className>de.slopjong.webservice.Example</className>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>java2wsdl</goal>
+            </goals>
+          </execution>
+         </executions>
+      </plugin>
+    </plugins>
   </build>
     
   <dependencies>
