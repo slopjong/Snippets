@@ -11,21 +11,27 @@
   <build>
     <finalName>${project.artifactId}-${project.version}</finalName>
     <plugins>
+        
       <plugin>
         <groupId>org.apache.axis2</groupId>
         <artifactId>axis2-java2wsdl-maven-plugin</artifactId>
         <version>1.6.2</version>
         <configuration>
           <className>de.slopjong.webservice.Example</className>
+          <serviceName>Example</serviceName>
+          <schemaTargetNamespace>http://slopjong.de</schemaTargetNamespace>
+          <schemaTargetNamespacePrefix>tns</schemaTargetNamespacePrefix>
         </configuration>
         <executions>
           <execution>
+            <phase>package</phase>
             <goals>
               <goal>java2wsdl</goal>
             </goals>
           </execution>
          </executions>
       </plugin>
+      
     </plugins>
   </build>
     
