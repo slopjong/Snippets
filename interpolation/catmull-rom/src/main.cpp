@@ -1,4 +1,6 @@
 #include <QApplication>
+#include <QtCore/QFile>
+#include <QtCore/QTextStream>
 #include "mainwindow.h"
 #include <math.h>
 #include <algorithm>
@@ -17,6 +19,13 @@ int main(int argc, char *argv[])
       {12, -5},
       {13, 6}
     };
+
+    // the output file
+    QFile output;
+    output.setFileName("results.dat");
+    output.open(QIODevice::WriteOnly | QIODevice::Text);
+    QTextStream fout(&output);
+
 
     // Catmull-Rom algorithm
 
@@ -67,10 +76,11 @@ int main(int argc, char *argv[])
                 results[bi_ctr] = sum;
             }
 
-            //qDebug() << results[0] << results[1];
-            // TODO: write the interpolated points to a file
+            fout << results[0] << " " << results[1] << "\n";
         }
     }
+
+    output.close();
 
     exit(0);
     return a.exec();
