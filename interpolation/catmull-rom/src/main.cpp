@@ -34,6 +34,10 @@ int main(int argc, char *argv[])
 
     for(int i=0; i<number_points-1; i++)
     {
+        // Select the four points required for the calculation.
+        // With the min/max functions the border points are implicitely
+        // duplicated as they wouldn't be interpolated by the algorithm
+        // otherwise.
         for(int j=0; j<2; j++)
         {
             Gbi[0][j] = data[std::max(0, i-1)][j];
@@ -42,11 +46,13 @@ int main(int argc, char *argv[])
             Gbi[3][j] = data[std::min(number_points-1, i+2)][j];
         }
 
+        // interpolate points between two given points
         for(double u=0; u<1; u=u+0.001)
         {
             double T[4] = {pow(u,3), pow(u,2), u, 1};
             double results[2] = {0, 0};
 
+            // interpolate one point by calculating T * Mcr * Gbi
             for(int bi_ctr=0; bi_ctr<2; bi_ctr++)
             {
                 double sum = 0;
