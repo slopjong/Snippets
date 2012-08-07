@@ -20,7 +20,8 @@ int main(int argc, char *argv[])
 
     // Catmull-Rom algorithm
 
-    double MCR[4][4] = {
+    // basic matrix
+    double Mcr[4][4] = {
         {-0.5, 1.5, -1.5, 0.5},
         {1, -2.5, 2, -0.5},
         {-0.5, 0, 0.5, 0},
@@ -29,36 +30,38 @@ int main(int argc, char *argv[])
 
     int number_points = sizeof(data) / sizeof( data[0] );
 
-    double points[4][2];
+    double Gbi[4][2];
 
     for(int i=0; i<number_points-1; i++)
     {
         for(int j=0; j<2; j++)
         {
-            points[0][j] = data[std::max(0, i-1)][j];
-            points[1][j] = data[i][j];
-            points[2][j] = data[std::min(number_points-1, i+1)][j];
-            points[3][j] = data[std::min(number_points-1, i+2)][j];
+            Gbi[0][j] = data[std::max(0, i-1)][j];
+            Gbi[1][j] = data[i][j];
+            Gbi[2][j] = data[std::min(number_points-1, i+1)][j];
+            Gbi[3][j] = data[std::min(number_points-1, i+2)][j];
         }
 
         for(double u=0; u<1; u=u+0.001)
         {
-            double uVector[4] = {pow(u,3), pow(u,2), u, 1};
+            double T[4] = {pow(u,3), pow(u,2), u, 1};
             double results[2] = {0, 0};
 
-            for(int coordinate=0; coordinate<2; coordinate++)
+            for(int bi_ctr=0; bi_ctr<2; bi_ctr++)
             {
-                for(int point=0; point<4; point++)
+                double sum = 0;
+                for(int point_row=0; point_row<4; point_row++)
                 {
-                    for(int MCRrow=0; MCRrow<4; MCRrow++)
+                    for(int mcr_row=0; mcr_row<4; mcr_row++)
                     {
-                        double sum = results[coordinate];
-                        results[coordinate] = sum + uVector[MCRrow]
-                                * MCR[MCRrow][point] * points[point][coordinate];
+                        sum += T[mcr_row] * Mcr[mcr_row][point_row]
+                                * Gbi[point_row][bi_ctr];
                     }
                 }
+                results[bi_ctr] = sum;
             }
 
+            //qDebug() << results[0] << results[1];
             // TODO: write the interpolated points to a file
         }
     }
