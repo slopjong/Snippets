@@ -21,8 +21,44 @@
        <string>0 3
 10 1
 12 -5
-13 6</string>
+13 6
+14 10
+17 -20
+20 20
+23 -30
+28 30
+31 -40
+34 50</string>
       </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QFrame" name="frame">
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>Value at interpolated position</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="tLineEdit"/>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="resultLineEdit">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </item>
     <item>

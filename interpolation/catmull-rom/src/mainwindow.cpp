@@ -29,6 +29,15 @@ MainWindow::~MainWindow()
 
 void MainWindow::interpolateButtonClicked()
 {
+    QString tString = ui->tLineEdit->text();
+    bool ok;
+    double tValue = tString.toDouble(&ok);
+
+    if(!ok)
+        ; // if you're too stupid to enter a valid number, you're too stupid
+    // to read a proper error message, so no error message here.
+
+
     // get the input by filtering non-valid input data
     QTextDocument *doc = ui->dataInput->document();
     QStringList inputList;
@@ -115,6 +124,19 @@ void MainWindow::interpolateButtonClicked()
             }
 
             fout << results[0] << " " << results[1] << "\n";
+
+            // if the user entered a valid value for x then display y
+            if(ok)
+            {
+                //qDebug() << "ok";
+
+                double diff = results[0] - tValue;
+                //qDebug() << tValue << " " << results[0];
+                qDebug() << diff;
+
+                if( diff <= 0.001 )
+                    ui->resultLineEdit->setText(QString("%1").arg(results[1]));
+            }
         }
     }
 
