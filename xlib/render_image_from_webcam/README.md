@@ -19,15 +19,4 @@ ltrace -e donttraceanycalls ./camshot
 
 ```donttraceanycalls``` doesn't mean anything. It's just used as a filter to reduce the ltrace output which would write all the library calls to the standard output otherwise.
 
-If the output looks like 
-
-```
-mplayer: could not connect to socket
-mplayer: No such file or directory
---- SIGCHLD (Child exited) ---
-Image loaded
-Width:640
-Height:480
-+++ exited (status 0) +++
-```
-then try to run it as root. ```mplayer``` should be found then. 
+*Important*, you have to be in the ```video``` group in order to let mplayer open the ```/dev/video0``` device. Otherwise you have to run _camshot_ as root.
