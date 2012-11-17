@@ -19,4 +19,4 @@ ltrace -e donttraceanycalls ./camshot
 
 ```donttraceanycalls``` doesn't mean anything. It's just used as a filter to reduce the ltrace output which would write all the library calls to the standard output otherwise.
 
-**Important**, you have to be in the ```video``` group in order to let mplayer open the ```/dev/video0``` device. Otherwise you have to run _camshot_ as root.
+**Important**, you have to be in the ```video``` group in order to let mplayer open the ```/dev/video0``` device. Otherwise you have to run _camshot_ as root. Execute ```sudo usermod -a -G video YOU``` if you're not in the video group yet.
