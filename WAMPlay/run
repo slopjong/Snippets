@@ -1,0 +1,3 @@
+#!/bin/bash
+
+./activator "run 8888"
