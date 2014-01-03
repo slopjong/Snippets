@@ -1,0 +1,79 @@
+<!doctype html>
+
+<html>
+  <head>
+    <title>I-105</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <style>
+      body {
+        text-align: center;
+        padding: 0px;
+        margin: 0px;
+      }
+
+      /* clearfix */
+      .clear:before,
+      .clear:after {content:""; display:table;}
+      .clear:after {clear:both;}
+      .clear { *zoom:1;}
+
+      /* apply a natural box layout model to all elements */
+      *, *:before, *:after {
+        -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+       }
+
+      .wrapper {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        bottom: 10px;
+        left: 10px;
+        border: 1px solid blue;
+      }
+
+      .gauge {
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        bottom: 30px;
+        left: 30px;
+        border: 1px solid red;
+      }
+
+      #g1 {
+        pos
+      }
+    </style>
+
+    <script type="text/javascript" src="../../resources/js/raphael.2.1.0.min.js"></script>
+    <script type="text/javascript" src="../../+GIT+/justgage.js"></script>
+
+    <script>
+      window.onload = function(){
+        var g1 = new JustGage({
+          id: "g1",
+          value: 45,
+          title: "Responsive Test",
+          label: "\xB0C",
+          relativeGaugeSize: true,
+          showMinMax: false,
+          startAnimationTime: 200,
+          startAnimationType: "<>",
+          refreshAnimationTime: 400,
+          refreshAnimationType: "<>"
+        });
+
+        setInterval(function() {
+          g1.refresh(getRandomInt(0, 100));
+        }, 1500);
+      };
+    </script>
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <div id="g1" class="gauge"></div>
+    </div>
+  </body>
+</html>
