@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+    <title>Calculator</title>
+    <script src="../angular.js"></script>
+    <script src="math.js"></script>
+    <script>
+
+        function CalculatorController($scope) {
+
+            /**************************************************************/
+            // Attributes
+
+            $scope.display = { val: "0" };
+            $scope.lastKeyWasOperator = false;
+            $scope.operation = OperationFactory.createAns();
+
+            /**************************************************************/
+            // Watchers
+
+            // Set the operation's value or right operand
+            $scope.$watch('display.val', (function(){
+                return function() {
+                    console.log('Display has been changed (property: display.val)');
+
+                    if($scope.operation.type === 'unaryOperation') {
+                        $scope.operation.val = parseFloat($scope.display.val);
+                        console.log('Updating the value of the current unary operation (property: display.val)');
+                    } else {
+                        $scope.operation.right = parseFloat($scope.display.val);
+                        console.log('Updating the right operand of the current binary operation (property: display.val)');
+                    }
+                }
+            })());
+
+            /**************************************************************/
+            // Helpers
+
+            // evaluates the operation, updates the display, sets a dirty flag
+            // and returns the result
+            var evaluateOperation = function() {
+                // evaluate the previous operation and update the display
+                console.log('evaluate the previous operation and update the display');
+                var ans = $scope.operation.calculate();
+                $scope.display.val = ans;
+                $scope.lastKeyWasOperator = true;
+
+                return ans;
+            }
+
+            // process operations that have one operand only
+            var processUnaryOperation = function(operation) {
+
+                // we need an intermediate result before we assign a new
+                // operation
+                var ans = evaluateOperation();
+
+                // assign the new operation to the scope and initiliaze its
+                // value field
+                console.log('assigning the new operation', operation);
+                $scope.operation = operation;
+                $scope.operation.val = ans;
+            }
+
+            // process operations that have two operands
+            var processBinaryOperation = function(operation) {
+
+                // we need an intermediate result before we assign a new
+                // operation
+                var ans = evaluateOperation();
+
+                // assign the new operation to the scope and initiliaze the
+                // left operand
+                console.log('assigning the new operation', operation);
+                $scope.operation = operation;
+                $scope.operation.left = ans;
+                $scope.operation.right = null;
+            }
+
+            /**************************************************************/
+            // Event handlers
+
+            $scope.onEqual = function() {
+                console.log('$scope.onEqual');
+                processUnaryOperation(OperationFactory.createAns());
+            }
+
+            $scope.onPlus = function() {
+                console.log('$scope.onPlus');
+                processBinaryOperation(OperationFactory.createPlus());
+            }
+
+            $scope.onMinus = function() {
+                console.log('$scope.onMinus');
+                processBinaryOperation(OperationFactory.createMinus());
+            }
+
+            $scope.onDivide = function() {
+                console.log('$scope.onDivide');
+                processBinaryOperation(OperationFactory.createDivide());
+            }
+
+            $scope.onMultiply = function() {
+                console.log('$scope.onMultiply');
+                processBinaryOperation(OperationFactory.createMultiply());
+            }
+
+            $scope.appendCharToDisplay = function(character) {
+
+                // make sure that we work with a string later
+                character = character.toString();
+
+                if($scope.lastKeyWasOperator) {
+                    console.log("Clearing the display");
+                    $scope.display.val = "";
+                    $scope.lastKeyWasOperator = false;
+                }
+
+                // blank the initial zero as soon as we hit a button other
+                // than the dot
+                if(character !== '.' && $scope.display.val.length === 1 && String.indexOf($scope.display.val, 0) == '0')
+                    $scope.display.val = '';
+
+                // suppress the concatenation of another dot if there's already one
+                if(character == '.' && /.*\..*/.test($scope.display.val))
+                    return;
+
+                // if we reach this, the character will finally be appended
+                $scope.display.val += character;
+
+                console.log('Character '+ character + ' appended to the display');
+            }
+        }
+    </script>
+
+</head>
+<body ng-controller="CalculatorController">
+    <div>
+        <div>Val:<span>{{display.val}}</span></div>
+    </div>
+    <button ng-click="appendCharToDisplay(7)">7</button><button ng-click="appendCharToDisplay(8)">8</button><button ng-click="appendCharToDisplay(9)">9</button><button ng-click="onDivide()">/</button><br>
+    <button ng-click="appendCharToDisplay(4)">4</button><button ng-click="appendCharToDisplay(5)">5</button><button ng-click="appendCharToDisplay(6)">6</button><button ng-click="onMultiply()">*</button><br>
+    <button ng-click="appendCharToDisplay(1)">1</button><button ng-click="appendCharToDisplay(2)">2</button><button ng-click="appendCharToDisplay(3)">3</button><button ng-click="onMinus()">-</button><br>
+    <button ng-click="appendCharToDisplay(0)">0</button><button ng-click="appendCharToDisplay('.')">.</button><button ng-click="onEqual()">=</button><button ng-click="onPlus()">+</button><br>
+
+    <table border="1">
+        <tr><td colspan="2">{{operation.operator}}</td></tr>
+        <tr><td>{{operation.left}}</td><td>{{operation.right}}</td></tr>
+        <tr><td colspan="2">{{operation.val}}</td></tr>
+    </table>
+</body>
+</html>
