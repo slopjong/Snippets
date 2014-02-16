@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Arrow Test</title>
+    <style>
+        body {
+            background: #888;
+        }
+
+        div {
+            border-top: 60px solid rgba(0, 0, 0, 0);
+            border-bottom: 60px solid rgba(0, 0, 0, 0);
+            border-right: 60px solid #FFFFFF;
+            height: 0;
+            width: 0;
+        }
+
+        .anti-aliased {
+            /* this is a firefox hack which makes a nicer border as seen here:
+               http://red-team-design.com/css-diagonal-borders-still-not-rendering-properly-on-firefox/ */
+            -moz-transform: scale(0.9999)
+        }
+
+        .aliased {
+
+        }
+    </style>
+</head>
+<body>
+    <div class="anti-aliased">antialiased</div>
+    <div class="aliased">aliased</div>
+</body>
+</html>
