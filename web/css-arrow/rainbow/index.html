@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Arrow Test</title>
+    <style>
+
+        @font-face {
+            font-family: "Rainbow";
+            font-style: normal;
+            font-weight: 200;
+            src: url("font/Handwriting.ttf") format("truetype");
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .arrow {
+            /* this is a firefox hack which makes a nicer border as seen here:
+               http://red-team-design.com/css-diagonal-borders-still-not-rendering-properly-on-firefox/ */
+            -moz-transform: scale(0.9999);
+
+            border-top: 20px solid rgba(0, 0, 0, 0);
+            border-bottom: 20px solid rgba(0, 0, 0, 0);
+            height: 0;
+            width: 0;
+            border-right-width: 20px;
+            border-right-style: solid;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+
+        .container {
+            display: -webkit-flexbox;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .container-element {
+            position: relative;
+            display: inline-flex;
+            flex: 1;
+            height: 40px;
+            color: white;
+
+            align-items: center;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .content {
+            text-align: center;
+            width: 100%;
+            margin-left: -10px;
+            font: 2em bold Rainbow;
+            opacity: 0.3;
+        }
+
+        .rb-1 { background: #BD79D1; }
+        .rb-2 { background: #4F5D95; }
+        .rb-3 { background: #1E4AEC; }
+        .rb-4 { background: #1AC620; }
+        .rb-5 { background: #F1E05A; }
+        .rb-6 { background: #FF9C2E; }
+        .rb-7 { background: #FF0000; }
+
+        .arrow.rb-1 { border-right-color: #4F5D95; }
+        .arrow.rb-2 { border-right-color: #1E4AEC; }
+        .arrow.rb-3 { border-right-color: #1AC620; }
+        .arrow.rb-4 { border-right-color: #F1E05A; }
+        .arrow.rb-5 { border-right-color: #FF9C2E; }
+        .arrow.rb-6 { border-right-color: #FF0000; }
+        .arrow.rb-7 { border-right-color: #FF0000; }
+
+    </style>
+</head>
+<body>
+
+<!--a bit about flexbox-->
+<!--http://stackoverflow.com/questions/15726740/vertically-centre-items-with-flexbox-->
+<!--http://codepen.io/cimmanon/pen/mxuFa-->
+
+<div class="container">
+    <div class="container-element rb-1">
+        <div class="arrow rb-1"></div>
+        <div class="content">R</div>
+    </div>
+    <div class="container-element rb-2">
+        <div class="arrow rb-2"></div>
+        <div class="content">A</div>
+    </div>
+    <div class="container-element rb-3">
+        <div class="arrow rb-3"></div>
+        <div class="content">I</div>
+    </div>
+    <div class="container-element rb-4">
+        <div class="arrow rb-4"></div>
+        <div class="content">N</div>
+    </div>
+    <div class="container-element rb-5">
+        <div class="arrow rb-5"></div>
+        <div class="content">B</div>
+    </div>
+    <div class="container-element rb-6">
+        <div class="arrow rb-6"></div>
+        <div class="content">O</div>
+    </div>
+    <div class="container-element rb-7">
+        <div class="arrow rb-7"></div>
+        <div class="content">W</div>
+    </div>
+</div>
+<div class="container">
+    <div class="container-element rb-1">
+        <div class="arrow rb-1"></div>
+        <div class="content">R</div>
+    </div>
+    <div class="container-element rb-2">
+        <div class="arrow rb-2"></div>
+        <div class="content">A</div>
+    </div>
+    <div class="container-element rb-3">
+        <div class="arrow rb-3"></div>
+        <div class="content">I</div>
+    </div>
+    <div class="container-element rb-4">
+        <div class="arrow rb-4"></div>
+        <div class="content">N</div>
+    </div>
+    <div class="container-element rb-5">
+        <div class="arrow rb-5"></div>
+        <div class="content">B</div>
+    </div>
+    <div class="container-element rb-6">
+        <div class="arrow rb-6"></div>
+        <div class="content">O</div>
+    </div>
+    <div class="container-element rb-7">
+        <div class="arrow rb-7"></div>
+        <div class="content">W</div>
+    </div>
+</div>
+<div class="container">
+    <div class="container-element rb-1">
+        <div class="arrow rb-1"></div>
+        <div class="content">R</div>
+    </div>
+    <div class="container-element rb-2">
+        <div class="arrow rb-2"></div>
+        <div class="content">A</div>
+    </div>
+    <div class="container-element rb-3">
+        <div class="arrow rb-3"></div>
+        <div class="content">I</div>
+    </div>
+    <div class="container-element rb-4">
+        <div class="arrow rb-4"></div>
+        <div class="content">N</div>
+    </div>
+    <div class="container-element rb-5">
+        <div class="arrow rb-5"></div>
+        <div class="content">B</div>
+    </div>
+    <div class="container-element rb-6">
+        <div class="arrow rb-6"></div>
+        <div class="content">O</div>
+    </div>
+    <div class="container-element rb-7">
+        <div class="arrow rb-7"></div>
+        <div class="content">W</div>
+    </div>
+</div>
+<div class="container">
+    <div class="container-element rb-1">
+        <div class="arrow rb-1"></div>
+        <div class="content">R</div>
+    </div>
+    <div class="container-element rb-2">
+        <div class="arrow rb-2"></div>
+        <div class="content">A</div>
+    </div>
+    <div class="container-element rb-3">
+        <div class="arrow rb-3"></div>
+        <div class="content">I</div>
+    </div>
+    <div class="container-element rb-4">
+        <div class="arrow rb-4"></div>
+        <div class="content">N</div>
+    </div>
+    <div class="container-element rb-5">
+        <div class="arrow rb-5"></div>
+        <div class="content">B</div>
+    </div>
+    <div class="container-element rb-6">
+        <div class="arrow rb-6"></div>
+        <div class="content">O</div>
+    </div>
+    <div class="container-element rb-7">
+        <div class="arrow rb-7"></div>
+        <div class="content">W</div>
+    </div>
+</div>
+<div class="container">
+    <div class="container-element rb-1">
+        <div class="arrow rb-1"></div>
+        <div class="content">R</div>
+    </div>
+    <div class="container-element rb-2">
+        <div class="arrow rb-2"></div>
+        <div class="content">A</div>
+    </div>
+    <div class="container-element rb-3">
+        <div class="arrow rb-3"></div>
+        <div class="content">I</div>
+    </div>
+    <div class="container-element rb-4">
+        <div class="arrow rb-4"></div>
+        <div class="content">N</div>
+    </div>
+    <div class="container-element rb-5">
+        <div class="arrow rb-5"></div>
+        <div class="content">B</div>
+    </div>
+    <div class="container-element rb-6">
+        <div class="arrow rb-6"></div>
+        <div class="content">O</div>
+    </div>
+    <div class="container-element rb-7">
+        <div class="arrow rb-7"></div>
+        <div class="content">W</div>
+    </div>
+</div>
+<div class="container">
+    <div class="container-element rb-1">
+        <div class="arrow rb-1"></div>
+        <div class="content">R</div>
+    </div>
+    <div class="container-element rb-2">
+        <div class="arrow rb-2"></div>
+        <div class="content">A</div>
+    </div>
+    <div class="container-element rb-3">
+        <div class="arrow rb-3"></div>
+        <div class="content">I</div>
+    </div>
+    <div class="container-element rb-4">
+        <div class="arrow rb-4"></div>
+        <div class="content">N</div>
+    </div>
+    <div class="container-element rb-5">
+        <div class="arrow rb-5"></div>
+        <div class="content">B</div>
+    </div>
+    <div class="container-element rb-6">
+        <div class="arrow rb-6"></div>
+        <div class="content">O</div>
+    </div>
+    <div class="container-element rb-7">
+        <div class="arrow rb-7"></div>
+        <div class="content">W</div>
+    </div>
+</div>
+<div class="container">
+    <div class="container-element rb-1">
+        <div class="arrow rb-1"></div>
+        <div class="content">R</div>
+    </div>
+    <div class="container-element rb-2">
+        <div class="arrow rb-2"></div>
+        <div class="content">A</div>
+    </div>
+    <div class="container-element rb-3">
+        <div class="arrow rb-3"></div>
+        <div class="content">I</div>
+    </div>
+    <div class="container-element rb-4">
+        <div class="arrow rb-4"></div>
+        <div class="content">N</div>
+    </div>
+    <div class="container-element rb-5">
+        <div class="arrow rb-5"></div>
+        <div class="content">B</div>
+    </div>
+    <div class="container-element rb-6">
+        <div class="arrow rb-6"></div>
+        <div class="content">O</div>
+    </div>
+    <div class="container-element rb-7">
+        <div class="arrow rb-7"></div>
+        <div class="content">W</div>
+    </div>
+</div>
+<div class="container">
+    <div class="container-element rb-1">
+        <div class="arrow rb-1"></div>
+        <div class="content">R</div>
+    </div>
+    <div class="container-element rb-2">
+        <div class="arrow rb-2"></div>
+        <div class="content">A</div>
+    </div>
+    <div class="container-element rb-3">
+        <div class="arrow rb-3"></div>
+        <div class="content">I</div>
+    </div>
+    <div class="container-element rb-4">
+        <div class="arrow rb-4"></div>
+        <div class="content">N</div>
+    </div>
+    <div class="container-element rb-5">
+        <div class="arrow rb-5"></div>
+        <div class="content">B</div>
+    </div>
+    <div class="container-element rb-6">
+        <div class="arrow rb-6"></div>
+        <div class="content">O</div>
+    </div>
+    <div class="container-element rb-7">
+        <div class="arrow rb-7"></div>
+        <div class="content">W</div>
+    </div>
+</div>
+<div class="container">
+    <div class="container-element rb-1">
+        <div class="arrow rb-1"></div>
+        <div class="content">R</div>
+    </div>
+    <div class="container-element rb-2">
+        <div class="arrow rb-2"></div>
+        <div class="content">A</div>
+    </div>
+    <div class="container-element rb-3">
+        <div class="arrow rb-3"></div>
+        <div class="content">I</div>
+    </div>
+    <div class="container-element rb-4">
+        <div class="arrow rb-4"></div>
+        <div class="content">N</div>
+    </div>
+    <div class="container-element rb-5">
+        <div class="arrow rb-5"></div>
+        <div class="content">B</div>
+    </div>
+    <div class="container-element rb-6">
+        <div class="arrow rb-6"></div>
+        <div class="content">O</div>
+    </div>
+    <div class="container-element rb-7">
+        <div class="arrow rb-7"></div>
+        <div class="content">W</div>
+    </div>
+</div>
+<div class="container">
+    <div class="container-element rb-1">
+        <div class="arrow rb-1"></div>
+        <div class="content">R</div>
+    </div>
+    <div class="container-element rb-2">
+        <div class="arrow rb-2"></div>
+        <div class="content">A</div>
+    </div>
+    <div class="container-element rb-3">
+        <div class="arrow rb-3"></div>
+        <div class="content">I</div>
+    </div>
+    <div class="container-element rb-4">
+        <div class="arrow rb-4"></div>
+        <div class="content">N</div>
+    </div>
+    <div class="container-element rb-5">
+        <div class="arrow rb-5"></div>
+        <div class="content">B</div>
+    </div>
+    <div class="container-element rb-6">
+        <div class="arrow rb-6"></div>
+        <div class="content">O</div>
+    </div>
+    <div class="container-element rb-7">
+        <div class="arrow rb-7"></div>
+        <div class="content">W</div>
+    </div>
+</div>
+<div class="container">
+    <div class="container-element rb-1">
+        <div class="arrow rb-1"></div>
+        <div class="content">R</div>
+    </div>
+    <div class="container-element rb-2">
+        <div class="arrow rb-2"></div>
+        <div class="content">A</div>
+    </div>
+    <div class="container-element rb-3">
+        <div class="arrow rb-3"></div>
+        <div class="content">I</div>
+    </div>
+    <div class="container-element rb-4">
+        <div class="arrow rb-4"></div>
+        <div class="content">N</div>
+    </div>
+    <div class="container-element rb-5">
+        <div class="arrow rb-5"></div>
+        <div class="content">B</div>
+    </div>
+    <div class="container-element rb-6">
+        <div class="arrow rb-6"></div>
+        <div class="content">O</div>
+    </div>
+    <div class="container-element rb-7">
+        <div class="arrow rb-7"></div>
+        <div class="content">W</div>
+    </div>
+</div>
+<div class="container">
+    <div class="container-element rb-1">
+        <div class="arrow rb-1"></div>
+        <div class="content">R</div>
+    </div>
+    <div class="container-element rb-2">
+        <div class="arrow rb-2"></div>
+        <div class="content">A</div>
+    </div>
+    <div class="container-element rb-3">
+        <div class="arrow rb-3"></div>
+        <div class="content">I</div>
+    </div>
+    <div class="container-element rb-4">
+        <div class="arrow rb-4"></div>
+        <div class="content">N</div>
+    </div>
+    <div class="container-element rb-5">
+        <div class="arrow rb-5"></div>
+        <div class="content">B</div>
+    </div>
+    <div class="container-element rb-6">
+        <div class="arrow rb-6"></div>
+        <div class="content">O</div>
+    </div>
+    <div class="container-element rb-7">
+        <div class="arrow rb-7"></div>
+        <div class="content">W</div>
+    </div>
+</div>
+<div class="container">
+    <div class="container-element rb-1">
+        <div class="arrow rb-1"></div>
+        <div class="content">R</div>
+    </div>
+    <div class="container-element rb-2">
+        <div class="arrow rb-2"></div>
+        <div class="content">A</div>
+    </div>
+    <div class="container-element rb-3">
+        <div class="arrow rb-3"></div>
+        <div class="content">I</div>
+    </div>
+    <div class="container-element rb-4">
+        <div class="arrow rb-4"></div>
+        <div class="content">N</div>
+    </div>
+    <div class="container-element rb-5">
+        <div class="arrow rb-5"></div>
+        <div class="content">B</div>
+    </div>
+    <div class="container-element rb-6">
+        <div class="arrow rb-6"></div>
+        <div class="content">O</div>
+    </div>
+    <div class="container-element rb-7">
+        <div class="arrow rb-7"></div>
+        <div class="content">W</div>
+    </div>
+</div>
+<div class="container">
+    <div class="container-element rb-1">
+        <div class="arrow rb-1"></div>
+        <div class="content">R</div>
+    </div>
+    <div class="container-element rb-2">
+        <div class="arrow rb-2"></div>
+        <div class="content">A</div>
+    </div>
+    <div class="container-element rb-3">
+        <div class="arrow rb-3"></div>
+        <div class="content">I</div>
+    </div>
+    <div class="container-element rb-4">
+        <div class="arrow rb-4"></div>
+        <div class="content">N</div>
+    </div>
+    <div class="container-element rb-5">
+        <div class="arrow rb-5"></div>
+        <div class="content">B</div>
+    </div>
+    <div class="container-element rb-6">
+        <div class="arrow rb-6"></div>
+        <div class="content">O</div>
+    </div>
+    <div class="container-element rb-7">
+        <div class="arrow rb-7"></div>
+        <div class="content">W</div>
+    </div>
+</div>
+<div class="container">
+    <div class="container-element rb-1">
+        <div class="arrow rb-1"></div>
+        <div class="content">R</div>
+    </div>
+    <div class="container-element rb-2">
+        <div class="arrow rb-2"></div>
+        <div class="content">A</div>
+    </div>
+    <div class="container-element rb-3">
+        <div class="arrow rb-3"></div>
+        <div class="content">I</div>
+    </div>
+    <div class="container-element rb-4">
+        <div class="arrow rb-4"></div>
+        <div class="content">N</div>
+    </div>
+    <div class="container-element rb-5">
+        <div class="arrow rb-5"></div>
+        <div class="content">B</div>
+    </div>
+    <div class="container-element rb-6">
+        <div class="arrow rb-6"></div>
+        <div class="content">O</div>
+    </div>
+    <div class="container-element rb-7">
+        <div class="arrow rb-7"></div>
+        <div class="content">W</div>
+    </div>
+</div>
+<div class="container">
+    <div class="container-element rb-1">
+        <div class="arrow rb-1"></div>
+        <div class="content">R</div>
+    </div>
+    <div class="container-element rb-2">
+        <div class="arrow rb-2"></div>
+        <div class="content">A</div>
+    </div>
+    <div class="container-element rb-3">
+        <div class="arrow rb-3"></div>
+        <div class="content">I</div>
+    </div>
+    <div class="container-element rb-4">
+        <div class="arrow rb-4"></div>
+        <div class="content">N</div>
+    </div>
+    <div class="container-element rb-5">
+        <div class="arrow rb-5"></div>
+        <div class="content">B</div>
+    </div>
+    <div class="container-element rb-6">
+        <div class="arrow rb-6"></div>
+        <div class="content">O</div>
+    </div>
+    <div class="container-element rb-7">
+        <div class="arrow rb-7"></div>
+        <div class="content">W</div>
+    </div>
+</div>
+<div class="container">
+    <div class="container-element rb-1">
+        <div class="arrow rb-1"></div>
+        <div class="content">R</div>
+    </div>
+    <div class="container-element rb-2">
+        <div class="arrow rb-2"></div>
+        <div class="content">A</div>
+    </div>
+    <div class="container-element rb-3">
+        <div class="arrow rb-3"></div>
+        <div class="content">I</div>
+    </div>
+    <div class="container-element rb-4">
+        <div class="arrow rb-4"></div>
+        <div class="content">N</div>
+    </div>
+    <div class="container-element rb-5">
+        <div class="arrow rb-5"></div>
+        <div class="content">B</div>
+    </div>
+    <div class="container-element rb-6">
+        <div class="arrow rb-6"></div>
+        <div class="content">O</div>
+    </div>
+    <div class="container-element rb-7">
+        <div class="arrow rb-7"></div>
+        <div class="content">W</div>
+    </div>
+</div>
+<div class="container">
+    <div class="container-element rb-1">
+        <div class="arrow rb-1"></div>
+        <div class="content">R</div>
+    </div>
+    <div class="container-element rb-2">
+        <div class="arrow rb-2"></div>
+        <div class="content">A</div>
+    </div>
+    <div class="container-element rb-3">
+        <div class="arrow rb-3"></div>
+        <div class="content">I</div>
+    </div>
+    <div class="container-element rb-4">
+        <div class="arrow rb-4"></div>
+        <div class="content">N</div>
+    </div>
+    <div class="container-element rb-5">
+        <div class="arrow rb-5"></div>
+        <div class="content">B</div>
+    </div>
+    <div class="container-element rb-6">
+        <div class="arrow rb-6"></div>
+        <div class="content">O</div>
+    </div>
+    <div class="container-element rb-7">
+        <div class="arrow rb-7"></div>
+        <div class="content">W</div>
+    </div>
+</div>
+<div class="container">
+    <div class="container-element rb-1">
+        <div class="arrow rb-1"></div>
+        <div class="content">R</div>
+    </div>
+    <div class="container-element rb-2">
+        <div class="arrow rb-2"></div>
+        <div class="content">A</div>
+    </div>
+    <div class="container-element rb-3">
+        <div class="arrow rb-3"></div>
+        <div class="content">I</div>
+    </div>
+    <div class="container-element rb-4">
+        <div class="arrow rb-4"></div>
+        <div class="content">N</div>
+    </div>
+    <div class="container-element rb-5">
+        <div class="arrow rb-5"></div>
+        <div class="content">B</div>
+    </div>
+    <div class="container-element rb-6">
+        <div class="arrow rb-6"></div>
+        <div class="content">O</div>
+    </div>
+    <div class="container-element rb-7">
+        <div class="arrow rb-7"></div>
+        <div class="content">W</div>
+    </div>
+</div>
+<div class="container">
+    <div class="container-element rb-1">
+        <div class="arrow rb-1"></div>
+        <div class="content">R</div>
+    </div>
+    <div class="container-element rb-2">
+        <div class="arrow rb-2"></div>
+        <div class="content">A</div>
+    </div>
+    <div class="container-element rb-3">
+        <div class="arrow rb-3"></div>
+        <div class="content">I</div>
+    </div>
+    <div class="container-element rb-4">
+        <div class="arrow rb-4"></div>
+        <div class="content">N</div>
+    </div>
+    <div class="container-element rb-5">
+        <div class="arrow rb-5"></div>
+        <div class="content">B</div>
+    </div>
+    <div class="container-element rb-6">
+        <div class="arrow rb-6"></div>
+        <div class="content">O</div>
+    </div>
+    <div class="container-element rb-7">
+        <div class="arrow rb-7"></div>
+        <div class="content">W</div>
+    </div>
+</div>
+<div class="container">
+    <div class="container-element rb-1">
+        <div class="arrow rb-1"></div>
+        <div class="content">R</div>
+    </div>
+    <div class="container-element rb-2">
+        <div class="arrow rb-2"></div>
+        <div class="content">A</div>
+    </div>
+    <div class="container-element rb-3">
+        <div class="arrow rb-3"></div>
+        <div class="content">I</div>
+    </div>
+    <div class="container-element rb-4">
+        <div class="arrow rb-4"></div>
+        <div class="content">N</div>
+    </div>
+    <div class="container-element rb-5">
+        <div class="arrow rb-5"></div>
+        <div class="content">B</div>
+    </div>
+    <div class="container-element rb-6">
+        <div class="arrow rb-6"></div>
+        <div class="content">O</div>
+    </div>
+    <div class="container-element rb-7">
+        <div class="arrow rb-7"></div>
+        <div class="content">W</div>
+    </div>
+</div>
+
+</body>
+</html>
