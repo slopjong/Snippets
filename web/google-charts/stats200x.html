@@ -1,0 +1,80 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+
+        google.load('visualization', '1.0', {'packages':['corechart']});
+
+        google.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+
+            var data2001 = new google.visualization.DataTable();
+            data2001.addColumn('string', 'Topping');
+            data2001.addColumn('number', 'Slices');
+            data2001.addRows([
+                ['Ja', 29],
+                ['Zukünftig', 16],
+                ['Nein', 55]
+            ]);
+
+            var data2005 = new google.visualization.DataTable();
+            data2005.addColumn('string', 'Topping');
+            data2005.addColumn('number', 'Slices');
+            data2005.addRows([
+                ['Ja', 53],
+                ['Zukünftig', 23],
+                ['Nein', 24]
+            ]);
+
+            var data2010 = new google.visualization.DataTable();
+            data2010.addColumn('string', 'Topping');
+            data2010.addColumn('number', 'Slices');
+            data2010.addRows([
+                ['Ja', 85],
+                ['Zukünftig', 6],
+                ['Nein', 8]
+            ]);
+
+            var data2014 = new google.visualization.DataTable();
+            data2014.addColumn('string', 'Topping');
+            data2014.addColumn('number', 'Slices');
+            data2014.addRows([
+                ['Ja', 93],
+                ['Zukünftig', 2],
+                ['Nein', 5]
+            ]);
+
+            var options = {'width':400,'height':300};
+
+            var chart2001 = new google.visualization.PieChart(document.getElementById('stats2001'));
+            options.title = '2001';
+            chart2001.draw(data2001, options);
+
+            var chart2005 = new google.visualization.PieChart(document.getElementById('stats2005'));
+            options.title = '2005';
+            chart2005.draw(data2005, options);
+
+            var chart2010 = new google.visualization.PieChart(document.getElementById('stats2010'));
+            options.title = '2010';
+            chart2010.draw(data2010, options);
+
+            var chart2014 = new google.visualization.PieChart(document.getElementById('stats2014'));
+            options.title = '2014';
+            chart2014.draw(data2014, options);
+        }
+    </script>
+</head>
+
+<body>
+
+<div style="display: inline-block;">
+    <div id="stats2001" style="display: inline-block;"></div>
+    <div id="stats2005" style="display: inline-block;"></div>
+    <div id="stats2010" style="display: inline-block;"></div>
+    <div id="stats2014" style="display: inline-block;"></div>
+</div>
+
+</body>
+</html>
