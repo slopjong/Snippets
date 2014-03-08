@@ -1,0 +1,149 @@
+<html>
+	<!-- http://jsfiddle.net/Lpk3Z/4/ -->
+	<head>
+		<style>
+			@import url(http://fonts.googleapis.com/css?family=Oswald);
+
+			.list-wrap {
+			    position: relative;
+			}
+
+			ul {
+			    list-style: none outside none;
+			    display: table-cell;
+			    position: absolute;
+			    right: 0;
+			}
+
+			li {
+			    display: inline-block;
+			    padding-left: 17px;
+			    position: relative;
+			}
+
+			.link-wrap:before {
+			    border-color: #F2F2F2 rgba(242, 242, 242, 0);
+			    border-style: solid;
+			    border-width: 0 0 38px 14px;
+			    content: "";
+			    left: 3px;
+			    position: absolute;
+			    top: 0;
+			    width: 0;
+			    -moz-transform: scale(0.9999)
+			}
+
+			.link-wrap:after {
+			    border-color: #F2F2F2 rgba(242, 242, 242, 0);
+			    border-style: solid;
+			    border-width: 38px 14px 0 0;
+			    content: "";
+			    position: absolute;
+			    right: -14px;
+			    top: 0;
+			    width: 0;
+			    
+			    /* this is a firefox hack which makes a nicer border as seen here:
+			       http://red-team-design.com/css-diagonal-borders-still-not-rendering-properly-on-firefox/ */
+			    -moz-transform: scale(0.9999)
+			}
+
+			li:last-of-type .link-wrap:after {
+			    content: none;
+			}
+
+			li:first-of-type .link-wrap:before {
+			    content: none;
+			}
+
+			.link-wrap {
+			    background-color: #F2F2F2;
+			    color: #0087E6;
+			    cursor: pointer;
+			    display: block;
+			    height: 38px;
+			    line-height: 38px;
+			    min-width: 64px;
+			    text-align: center;
+			}
+
+
+			.link-wrap:hover, 
+			.link-wrap:hover * {
+			    background-color: #0087e6;
+			    color: #fff;
+			}
+
+			.link-wrap:hover:before, 
+			.link-wrap:hover:after {
+			    border-color: #0087e6 rgba(0,135,230,0);
+			}
+
+			a:after
+			{
+			    color: inherit;
+			    content: ">";
+			    font-size: 16px;
+			    font-style: normal;
+			    font-weight: normal;
+			    height: 16px;
+			    line-height: 16px;
+			    margin-top: -8px;
+			    position: absolute;
+			    right: 12px;
+			    text-align: center;
+			    top: 50%;
+			    width: 16px;
+			}
+
+			a {
+			    font-family: "Oswald";
+			    padding-right: 30px;
+			    color: #0087E6;
+			    display: inline-block;
+			    line-height: 1;
+			    padding: 10px 20px 10px 10px;
+			    position: relative;
+			    text-decoration: none;
+			}
+
+			.item {
+			    padding-right: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="list-wrap">
+		    <ul>
+			<li>
+			    <div class="link-wrap">
+				<a href="#">
+				    <span class="item">First</span>
+				</a>
+			    </div>
+			</li>
+			<li>
+			    <div class="link-wrap">
+				<a href="#">
+				    <span class="item">Second</span>
+				</a>
+			    </div>
+			</li>
+			<li>
+			    <div class="link-wrap">
+				<a href="#">
+				    <span class="item">Third</span>
+				</a>
+			    </div>
+			</li>
+			<li>
+			    <div class="link-wrap">
+				<a href="#">
+				    <span class="item">Fourth</span>
+				</a>
+			    </div>
+			</li>
+		    </ul>
+		</div>
+	</body>
+</html>
