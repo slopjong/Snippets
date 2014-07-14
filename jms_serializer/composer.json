@@ -1,0 +1,9 @@
+{
+    "name": "dfki/serializer_test",
+    "description": "Experiment with the JMS serializer",
+    "require": {
+        "php": ">=5.3.3",
+        "doctrine/common": "2.3.0",
+        "jms/serializer": "0.13.0"
+     }
+}
