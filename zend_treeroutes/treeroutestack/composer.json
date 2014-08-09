@@ -1,0 +1,10 @@
+{
+    "name": "dfki/treeroutestack_test",
+    "description": "Experiment of the TreeRouteStack",
+    "require": {
+        "php": ">=5.3.3",
+        "zendframework/zendframework": "2.2.1",
+        "zendframework/zend-developer-tools": "dev-master"
+    },
+    "_comment": "No usage of a wildcard in the zendframework version to avoid breakage when fetching a later version in the future."
+}

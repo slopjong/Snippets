@@ -1,0 +1,27 @@
+NOTE: 
+
+This experiment has finished, the code base is continued in Source/cps/src. 
+Please don't do any more changes here.
+
+==========================================================================
+
+VHOST to be added in /etc/httpd/conf/extra/httpd-vhosts.conf:
+
+<VirtualHost *:80>
+    ServerAdmin root@localhost
+    DocumentRoot "/srv/http/dfki/treeroute/public"
+    ServerName treeroute.dfki
+</VirtualHost>
+
+Domain to be added in /etc/hosts:
+
+## DFKI SmartFactory
+127.0.0.1 treeroute.dfki
+
+Then execute:
+
+mkdir -p /srv/http/dfki
+cd /srv/http/dfki
+git svn clone https://ifs.kl.dfki.de/repos/ifs/2013-CPSapp/Source/cps/experiments/treeroute_with_apps
+cd treeroute_with_apps
+./init.sh
