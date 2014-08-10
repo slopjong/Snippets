@@ -1,0 +1,16 @@
+The curl handshake test should output something like:
+
+HTTP/1.1 101 Web Socket Protocol Handshake
+Upgrade: WebSocket
+Connection: Upgrade
+WebSocket-Origin: http://www.websocket.org
+WebSocket-Location: ws://echo.websocket.org/
+Server: Kaazing Gateway
+Date: Thu, 14 Nov 2013 16:25:40 GMT
+Access-Control-Allow-Origin: http://www.websocket.org
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Headers: content-type
+Access-Control-Allow-Headers: authorization
+Access-Control-Allow-Headers: x-websocket-extensions
+Access-Control-Allow-Headers: x-websocket-version
+Access-Control-Allow-Headers: x-websocket-protocol
