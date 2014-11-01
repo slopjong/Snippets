@@ -4,20 +4,30 @@
         <link rel="stylesheet" href="jsplumb.css">
 
         <style>
-            #window2 { top: 27em; left: 49em; }
-            #window3 { top: 41em; left: 34em; }
-            #window4 { top:  9em; left: 28em; }
-            #window5 { top: 15em; left: 53em; }
+            .window2 { top: 27em; left: 49em; }
+            .window3 { top: 41em; left: 34em; }
+            .window4 { top:  9em; left: 28em; }
+            .window5 { top: 15em; left: 53em; }
         </style>
     </head>
     
     <body>
-        <div class="component window" id="window2"><strong>Window 2</strong></div>
-        <div class="component window" id="window3"><strong>Window 3</strong></div>
-        <div class="component window" id="window4"><strong>Window 4</strong></div>
-        <div class="component window" id="window5"><strong>Window 5</strong></div>
+        <div class="component window window2"><strong>Window 2</strong></div>
+        <div class="component window window3"><strong>Window 3</strong></div>
+        <div class="component window window4"><strong>Window 4</strong></div>
+        <div class="component window window5"><strong>Window 5</strong></div>
 
 		<script src="dom.jsPlumb-1.6.4-min.js"></script>
+
+        <script>
+            // jsPlumb works with IDs normally, here's an example of how setting
+            // the ID manually if you're working with classes.
+            document.getElementsByClassName("window2")[0].setAttribute("id", "window2");
+            document.getElementsByClassName("window3")[0].setAttribute("id", "window3");
+            document.getElementsByClassName("window4")[0].setAttribute("id", "window4");
+            document.getElementsByClassName("window5")[0].setAttribute("id", "window5");
+        </script>
+
 		<script src="demo.js"></script>
      </body>
 </html>
