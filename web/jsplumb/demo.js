@@ -1,5 +1,5 @@
-jsPlumb.ready(function() {			
-		
+jsPlumb.ready(function() {
+
 	var instance = jsPlumb.getInstance({
 		DragOptions : { cursor: "pointer", zIndex:2000 },
 		HoverClass:"connector-hover"
@@ -15,9 +15,9 @@ jsPlumb.ready(function() {
     var w23Stroke = "rgb(189,11,11)";
 
     var connection3 = instance.connect({
-		source: "window2",
-		target: "window3",
-		paintStyle:{ 
+		source: "window-2",
+		target: "window-3",
+		paintStyle:{
 			lineWidth:1,
 			strokeStyle: w23Stroke,
 			outlineColor: "#666",
@@ -30,12 +30,12 @@ jsPlumb.ready(function() {
 		endpointStyles:[
 			{ gradient : { stops:[[0, w23Stroke], [1, "#558822"]] }},
 			{ gradient : {stops:[[0, w23Stroke], [1, "#882255"]] }}
-		]	
+		]
 	});
 
     var connection3 = instance.connect({
-        source: "window5",
-        target: "window2",
+        source: "window-5",
+        target: "window-2",
         paintStyle:{
             lineWidth:1,
             strokeStyle: w23Stroke,
@@ -53,8 +53,8 @@ jsPlumb.ready(function() {
     });
 
     var connection3 = instance.connect({
-        source: "window4",
-        target: "window5",
+        source: "window-4",
+        target: "window-5",
         paintStyle:{
             lineWidth:1,
             strokeStyle: w23Stroke,
@@ -83,18 +83,18 @@ jsPlumb.ready(function() {
         originalEvent.preventDefault();
         return false;
     });
-	
+
 	// make all .window divs draggable. note that here i am just using a convenience method - getSelector -
 	// that enables me to reuse this code across all three libraries. In your own usage of jsPlumb you can use
 	// your library's selector method - "$" for jQuery, "$$" for MooTools, "Y.all" for YUI3.
-	//instance.draggable(jsPlumb.getSelector(".window"), { containment:".demo"});    
+	//instance.draggable(jsPlumb.getSelector(".window"), { containment:".demo"});
 	instance.draggable(jsPlumb.getSelector(".window"), {
 		drag:function() {
 			// console.log("DRAG")
 		}
-	});    
+	});
 
 	jsPlumb.fire("jsPlumbDemoLoaded", instance);
-});	
+});
 
 
