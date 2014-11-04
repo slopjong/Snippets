@@ -1,0 +1,79 @@
+    <!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="jsplumb.css">
+
+        <style>
+            body {
+                padding: 50px;
+            }
+
+            .box {
+                float: right;
+                width: 300px;
+                height: 300px;
+                border: 1px solid black;
+            }
+        </style>
+
+    </head>
+    
+    <body>
+
+        <div class="box" id="test1"></div>
+        <div class="box" id="test2"></div>
+
+		<script src="dom.jsPlumb-1.6.4-min.js"></script>
+
+        <script>
+            var instance = null;
+            var connection = null;
+
+            jsPlumb.ready(function() {
+
+                instance = jsPlumb.getInstance({
+                    DragOptions : { cursor: "pointer", zIndex:2000 },
+                    HoverClass:"connector-hover"
+                });
+
+                var connectorStrokeColor = "rgba(0, 0, 0, 1)";
+                var connectorHighlightStrokeColor = "rgba(0, 0, 0, 1)";
+
+                // hover paint style is merged on normal style, so you
+                // don't necessarily need to specify a lineWidth
+                var hoverPaintStyle = { strokeStyle:"#000" };
+
+                var w23Stroke = "rgb(0,0,0)";
+
+                connection = instance.connect({
+                    source: "test1",
+                    target: "test2",
+                    paintStyle:{
+                        lineWidth:1,
+                        strokeStyle: w23Stroke,
+                        outlineColor: "#666",
+                        outlineWidth: 1
+                    },
+                    detachable: false,
+                    hoverPaintStyle: hoverPaintStyle,
+                    anchors:[ [ 0.3 , 1, 0, 1 ], "Top" ],
+                    endpoint:"Rectangle",
+                    endpointStyles:[
+                        { gradient : { stops:[[0, w23Stroke], [1, "#558822"]] }},
+                        { gradient : {stops:[[0, w23Stroke], [1, "#882255"]] }}
+                    ]
+                });
+
+                window.onresize = function(event) {
+                    // doesn't work
+                    // connection.repaint();
+
+                    // to update a connection we can use setHover twice with true/false values
+                    // what is the right way to do it?
+                    connection.setHover(true);
+                    connection.setHover(false);
+                };
+            });
+        </script>
+     </body>
+</html>
